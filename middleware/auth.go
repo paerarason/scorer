@@ -5,14 +5,14 @@ import (
 	"net/http"
 	"golang.org/x/crypto/bcrypt"
 	"time"
-		"log"
-
+	"log"
 )
 
 type Claims struct {
 	AccountID int `json:"account_id"`
 	jwt.StandardClaims
 }
+
 func JWTokenMiddlerware(c *gin.Context){
 
 	tokenString, err := c.Cookie("token")

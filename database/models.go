@@ -11,10 +11,17 @@ type Team struct {
 	players []player `json:"players`
 }
 
-
-type match struct {
+type Match struct {
 	teamA    string  `json:"TeamA" binding:"required"`
-	teamB    string  `json:"TeamB" binding:"required" `
+	teamB    string  `json:"TeamB" binding:"required"`
 	overs    int     `json:"overs" binding:"required"`
 	players  int     `json:"players" binding:"required"`
 }
+
+
+
+
+
+ 
+
+

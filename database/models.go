@@ -1,14 +1,14 @@
 package database
 
-type player struct {
+type Player struct {
 	Name  string `json:"name" binding:"required"`
 	role  string `json:"role" binding:"required" "oneof=batsman bowler allrounder"`
 	Age   int    `json:"age" binding:"required"`
 }
 
 type Team struct {
-	Name  string `json:"name" binding:"required"`
-	players []player `json:"players`
+	Name  string     `json:"name" binding:"required"`
+	players []Player `json:"players`
 }
 
 type Match struct {

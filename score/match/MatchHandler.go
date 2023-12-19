@@ -1,4 +1,4 @@
-package scorer
+package match
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -26,10 +26,12 @@ func MatchCreate()gin.HandlerFunc {
 	}
 	defer client.Disconnect(context.Background())
 	collection := client.Database("scorer").Collection("match")
-	result, err := collection.InsertOne(context.Background(), mth)
+	_, err= collection.InsertOne(context.Background(), mth)
 	if err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})
 		return
 	}
+	c.JSON(200, gin.H{"message": "DOcument Saved!!"})
+		return 
 }
 }

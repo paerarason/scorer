@@ -5,6 +5,10 @@ import (
 	"log"
 	"fmt"
 	"github.com/joho/godotenv"
+	"github.com/paerarason/scorer/score/player"
+	"github.com/paerarason/scorer/score/team"
+	"github.com/paerarason/scorer/score/match"
+	"github.com/paerarason/scorer/middleware"
 )
 
 func main() {
@@ -21,11 +25,20 @@ func main() {
 	router.POST("api/account",account.CreateAccount())
     router.Use(middleware.JWTokenMiddlerware)
 	//Bunch of APIS for account management 
-	accounts:=router.Group("api/account")
+	players:=router.Group("api/player")
 	{
-		
+		players.POST("/",player.PlayerCreate())
 	}
 
+	matchs:=router.Group("api/match")
+	{
+		matchs.POST("/",match.MatchCreate())
+	}
+    
+	teams:=router.Group("api/team")
+	{
+		teams.POST("/",team.TeamCreate())
+	}
     
 
 }

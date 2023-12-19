@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"golang.org/x/crypto/bcrypt"
 	"time"
+	"github.com/paerarason/scorer/database"
 	"log"
 )
 
@@ -45,7 +46,7 @@ func GenerateToken() gin.HandlerFunc {
 	username := c.PostForm("username")
 	password := c.PostForm("password")
 	
-	db,err:=database.DB_connection()
+	db,err:=database.ConnectToMongo()
 	if err!=nil{
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Authentication failed"})
 			return

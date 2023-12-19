@@ -7,9 +7,6 @@ import (
 )
 
 
-
-
-
 func MatchCreate()gin.HandlerFunc {
     return func(c *gin.Context){
 		var mth database.Match

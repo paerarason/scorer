@@ -3,3 +3,7 @@
 #### ADMIN/SCORER logics
 
 
+#### websoceket clients capable of getting score 
+```https
+/score
+```

@@ -41,7 +41,7 @@ func main() {
 		teams.POST("/",team.TeamCreate())
 	}
     
-	router.GET("/ws", func(c *gin.Context) {
+	router.GET("/score", func(c *gin.Context) {
         conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
         if err != nil {
             log.Println(err)

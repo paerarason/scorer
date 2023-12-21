@@ -9,6 +9,7 @@ import (
 	"github.com/paerarason/scorer/score/team"
 	"github.com/paerarason/scorer/score/match"
 	"github.com/paerarason/scorer/middleware"
+	"github.com/paerarason/scorer/client"
 )
 
 func main() {
@@ -40,5 +41,12 @@ func main() {
 		teams.POST("/",team.TeamCreate())
 	}
     
-
+	router.GET("/ws", func(c *gin.Context) {
+        conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
+        if err != nil {
+            log.Println(err)
+            return
+        }
+        go client.ScoreHandler(conn)
+    })
 }
